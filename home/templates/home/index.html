@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <title>VoIP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="display-3">
+                    <span>
+                        <strong>
+                            Voice Over Insurance Protocol
+                        </strong>
+                    </span>
+                    </h4>
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="container pt-5 ">
+                            <div class="row color p-2">
+                                <div id="form1" class="col-6 mt-4">
+                                    <input id="radio1" type="radio" name="upload" checked><span class="mx-2 display-4">Upload a File</span>
+                                    <div id="form1" class="form-group mt-4">
+                                        <label class="control-label mt-4">Upload a PDF file:</label><br>
+                                        <input class="mt-4" name="pdf" type="file" accept=".pdf">
+                                    </div>
+                                </div>
+                                <!--<div id="form2" class="col-6">
+                                    <input id="radio2" type="radio" name="upload"><span class="mx-2 display-4">Paste in your text</span>
+                                    <div id="form2" class="form-group mt-4">
+                                        <label class="control-label">Paste in your text here:</label>
+                                        <textarea class="form-control" name="text" rows="8" type="text"
+                                                  placeholder="Your text here"></textarea>
+                                    </div>
+                                </div>-->
+                                <div class="form-group col-12 mt-4">
+                                    <button class="btn btn-success btn-block" type="submit">
+                                        Summarize
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #radio1, #radio2 {
+        width: 30px;
+        height: 30px;
+    }
+
+    div.disable {
+        pointer-events: none;
+        /* for "disabled" effect */
+        opacity: 0.5;
+    }
+
+    .color {
+        background: #EEEEEE;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#form2').children().addClass("disable");
+    });
+    $(document).ready(function () {
+        $("#radio1").click(function () {
+            //disable by adding disabled class
+            $('#form2').children().addClass("disable");
+            //enable by removing the disabled class
+            $('#form1').children().removeClass("disable");
+        });
+    });
+    $(document).ready(function () {
+        $("#radio2").click(function () {
+            //disable by adding disabled class
+            $('#form1').children().addClass("disable");
+            //enable by removing the disabled class
+            $('#form2').children().removeClass("disable");
+        });
+    });
+</script>
+
+
+</body>
+
+</html>
